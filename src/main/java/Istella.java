@@ -31,29 +31,32 @@ public class Istella {
                     System.out.println((i + 1) + ". " + tasks[i]);
                 }
                 printLine();
-            } else if (input.startsWith("mark ")) {
-                int index = Integer.parseInt(input.split(" ")[1]) - 1;
-                if (index >= 0 && index < taskCount) {
-                    tasks[index].markAsDone();
-                    printLine();
-                    System.out.println(" Nice! I've marked this task as done:");
-                    System.out.println("   " + tasks[index]);
-                    printLine();
-                }
-            } else if (input.startsWith("unmark ")) {
-                int index = Integer.parseInt(input.split(" ")[1]) - 1;
-                if (index >= 0 && index < taskCount) {
-                    tasks[index].unmarkAsDone();
-                    printLine();
-                    System.out.println(" OK, I've marked this task as not done yet:");
-                    System.out.println("   " + tasks[index]);
-                    printLine();
-                }
-            } else {
-                tasks[taskCount] = new Task(input);
+            } else if (input.startsWith("todo ")) {
+                String description = input.substring(5);
+                tasks[taskCount] = new Todo(description);
                 taskCount++;
                 printLine();
-                System.out.println(" added: " + input);
+                System.out.println(" Got it. I've added this task:");
+                System.out.println("   " + tasks[taskCount - 1]);
+                System.out.println(" Now you have " + taskCount + " tasks in the list.");
+                printLine();
+            } else if (input.startsWith("deadline ")) {
+                String[] parts = input.substring(9).split(" /by ");
+                tasks[taskCount] = new Deadline(parts[0], parts[1]);
+                taskCount++;
+                printLine();
+                System.out.println(" Got it. I've added this task:");
+                System.out.println("   " + tasks[taskCount - 1]);
+                System.out.println(" Now you have " + taskCount + " tasks in the list.");
+                printLine();
+            } else if (input.startsWith("event ")) {
+                String[] parts = input.substring(6).split(" /from | /to ");
+                tasks[taskCount] = new Event(parts[0], parts[1], parts[2]);
+                taskCount++;
+                printLine();
+                System.out.println(" Got it. I've added this task:");
+                System.out.println("   " + tasks[taskCount - 1]);
+                System.out.println(" Now you have " + taskCount + " tasks in the list.");
                 printLine();
             }
         }
