@@ -1,26 +1,94 @@
-# Duke project template
+# 📌 Istella Project
+**A Java-based CLI task management assistant**
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+---
 
-## Setting up in Intellij
+## **Introduction**
+**Istella** is a lightweight and interactive **command-line chatbot** that helps you manage your daily tasks efficiently. You can add different types of tasks, mark them as done, and list them in an organized manner. Istella is built using Java and follows an incremental development approach.
 
-Prerequisites: JDK 17, update Intellij to the most recent version.
+### **🚀 Features**
+- **Task Management**
+  - **ToDo**: Simple tasks without a date (e.g., `todo buy groceries`)
+  - **Deadline**: Tasks with a due date (e.g., `deadline submit report /by Friday`)
+  - **Event**: Tasks with a start and end time (e.g., `event team meeting /from 2pm /to 4pm`)
+- **Task Completion**
+  - Mark tasks as done (`mark 2`) or not done (`unmark 2`)
+- **Task Listing**
+  - View all added tasks (`list`)
+- **User-friendly CLI**
+  - Istella interacts with users through an easy-to-use command-line interface.
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-1. Open the project into Intellij as follows:
-   1. Click `Open`.
-   1. Select the project directory, and click `OK`.
-   1. If there are any further prompts, accept the defaults.
-1. Configure the project to use **JDK 17** (not other versions) as explained in [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).<br>
-   In the same dialog, set the **Project language level** field to the `SDK default` option.
-1. After that, locate the `src/main/java/Duke.java` file, right-click it, and choose `Run Duke.main()` (if the code editor is showing compile errors, try restarting the IDE). If the setup is correct, you should see something like the below as the output:
-   ```
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-   ```
+---
 
-**Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
+## **🛠 Setting Up in IntelliJ IDEA**
+### **📌 Prerequisites**
+- **JDK 17** (Ensure Java 17 is installed)
+- **Latest version of IntelliJ IDEA**
+
+### **🔧 Installation Steps**
+1. **Open IntelliJ IDEA**
+   - If a project is already open, go to `File` > `Close Project` to return to the welcome screen.
+
+2. **Import the Project**
+   - Click **Open**
+   - Select the project directory (`ip` folder if cloned from GitHub)
+   - Click **OK** and accept all default settings.
+
+3. **Set up the correct JDK**
+   - Go to **`File` > `Project Structure` > `Project`**
+   - Set **Project SDK** to `JDK 17`
+   - Set **Project language level** to `SDK default`
+   - Click `Apply` and `OK`
+
+4. **Run Istella**
+   - Navigate to `src/main/java/Istella.java`
+   - Right-click on `Istella.java`, select **Run 'Istella.main()'**
+   - If everything is set up correctly, you should see the following output:
+
+**Hello! I'm Istella
+What can I do for you?**
+
+
+---
+
+## **📝 Usage Guide**
+Here are some example commands to interact with Istella:
+
+| **Command**                           | **Description**                                      | **Example** |
+|----------------------------------|----------------------------------------------------|------------|
+| `todo <task>`                     | Adds a **ToDo** task                               | `todo buy milk` |
+| `deadline <task> /by <date>`      | Adds a **Deadline** task                           | `deadline project submission /by Sunday` |
+| `event <task> /from <start> /to <end>` | Adds an **Event** task                      | `event concert /from 6pm /to 10pm` |
+| `list`                            | Lists all added tasks                             | `list` |
+| `mark <task number>`              | Marks a task as done                              | `mark 2` |
+| `unmark <task number>`            | Marks a task as not done                          | `unmark 2` |
+| `bye`                             | Exits Istella                                     | `bye` |
+
+---
+
+
+---
+
+## **⚠ Important Notes**
+- **Keep all Java files inside `src/main/java/`**  
+  - Do not rename or move this directory, as tools like Gradle rely on it.
+- **Use Java 17**  
+  - Running the project with a different Java version may cause compatibility issues.
+
+---
+
+## **📚 Further Enhancements**
+- Implement **persistent storage** (save tasks to a file)
+- Add **natural language processing** for smarter interactions
+- Implement **graphical user interface (GUI)** using JavaFX
+
+---
+
+## **📩 Contributing**
+Feel free to contribute by:
+- Forking the repository
+- Creating feature branches
+- Submitting pull requests
+
+Happy coding! 🚀
+
