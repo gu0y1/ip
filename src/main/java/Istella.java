@@ -1,6 +1,10 @@
 import java.util.Scanner;
 
 public class Istella {
+    private static final int MAX_TASKS = 100;
+    private static String[] tasks = new String[MAX_TASKS];
+    private static int taskCount = 0;
+
     private static void printLine() {
         System.out.println("____________________________________________________________");
     }
@@ -20,10 +24,19 @@ public class Istella {
                 System.out.println(" Bye. Hope to see you again soon!");
                 printLine();
                 break;
+            } else if (input.equals("list")) {
+                printLine();
+                for (int i = 0; i < taskCount; i++) {
+                    System.out.println((i + 1) + ". " + tasks[i]);
+                }
+                printLine();
+            } else {
+                tasks[taskCount] = input;
+                taskCount++;
+                printLine();
+                System.out.println(" added: " + input);
+                printLine();
             }
-            printLine();
-            System.out.println(" " + input);
-            printLine();
         }
 
         scanner.close();
