@@ -4,7 +4,6 @@ public class Istella {
     private static final int MAX_TASKS = 100;
     private static Task[] tasks = new Task[MAX_TASKS];
     private static int taskCount = 0;
-
     private static void printLine() {
         System.out.println("____________________________________________________________");
     }
@@ -60,7 +59,6 @@ public class Istella {
                 printLine();
             }
         }
-
         scanner.close();
     }
 }
