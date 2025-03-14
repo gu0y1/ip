@@ -3,23 +3,34 @@ package istella;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * Handles loading and saving tasks to file.
+ */
 public class Storage {
-    private static final String FILE_PATH = "data/istella.txt";
+    private final String filePath;
 
-    public static void saveTasks(ArrayList<Task> tasks) throws IOException {
-        File file = new File(FILE_PATH);
-        file.getParentFile().mkdirs();
-        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-
-        for (Task task : tasks) {
-            writer.write(task.toSaveFormat());
-            writer.newLine();
-        }
-        writer.close();
+    public Storage(String filePath) {
+        this.filePath = filePath;
     }
 
-    public static ArrayList<Task> loadTasks() throws IOException {
-        File file = new File(FILE_PATH);
+    public void saveToFile(TaskList tasks) {
+        try {
+            File file = new File(filePath);
+            file.getParentFile().mkdirs();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+
+            for (Task task : tasks.getTasks()) {
+                writer.write(task.toSaveFormat());
+                writer.newLine();
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error saving tasks: " + e.getMessage());
+        }
+    }
+
+    public ArrayList<Task> loadTasks() throws IOException {
+        File file = new File(filePath);
         ArrayList<Task> tasks = new ArrayList<>();
 
         if (!file.exists()) {

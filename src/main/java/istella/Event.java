@@ -1,5 +1,8 @@
 package istella;
 
+/**
+ * Represents an event with a start and end time.
+ */
 public class Event extends Task {
     protected String from;
     protected String to;
@@ -11,12 +14,12 @@ public class Event extends Task {
     }
 
     @Override
-    public String toString() {
-        return "[E]" + super.toString() + " (from: " + from + " to: " + to + ")";
+    public String toSaveFormat() {
+        return "E | " + (isDone ? "1" : "0") + " | " + description + " | " + from + " | " + to;
     }
 
     @Override
-    public String toSaveFormat() {
-        return "T | " + super.toSaveFormat();
+    public String toString() {
+        return "[E]" + super.toString() + " (from: " + from + " to: " + to + ")";
     }
 }
